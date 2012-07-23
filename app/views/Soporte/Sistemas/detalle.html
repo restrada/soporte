@@ -1,0 +1,123 @@
+#{extends 'main.html' /}
+#{set title:'Ver Detalle ' /}
+<a href ="@{Soporte.Sistemas.pendientes}">&{'soporte.asunto.atras'}</a>
+<br>
+<br>
+<a href ="@{Soporte.Sistemas.index}">&{'soporte.menu.sistema'}</a>
+#{set 'moreStyles'}
+
+<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/play-pagination.css'}">
+#{/set}
+<br>
+
+#{tablasimple wd:'600'}
+<tr><td>
+
+#{paginate.controls items:paginator /}
+
+</td></tr>
+
+#{/tablasimple}
+
+#{tablasimple wd:'600px'}
+
+<tr><td>
+
+<div id="scroll-pane">
+	<table width=600px class=gridtable>
+		<tr>
+			<th>&{'soporte.asunto.titulo'}</th>
+			<th>Valor</th>
+		</tr>
+		
+		<tr>
+			<td>Asunto ID</td><td>${bean_asunto.asuntoID}</td>
+		</tr>
+		
+		<tr>
+			<td>Clave de Persona</td><td>${bean_asunto.clavePersona}</td>
+		</tr>
+		
+		<tr>
+			<td>&{'soporte.asunto.titulo'}</td><td>${bean_asunto.titulo}</td>
+		</tr>
+		
+		<tr>
+			<td>Detalle</td><td>${bean_asunto.detalle}</td>
+		</tr>
+		
+		<tr>
+			<td>Estatus</td><td>#{asuntoestatus valor:bean_asunto.estatus/}</td>
+		</tr>
+		
+		<tr>
+			<td>Fecha de Registro</td><td>${bean_asunto.fechaRegistro}</td>
+		</tr>
+		
+	<!--<tr>
+			<td>Prioridad</td><td>${bean_asunto.prioridad}</td>
+		</tr>-->
+		
+		<tr>
+			<td>Sucursal</td><td>${bean_asunto.sucursalID}</td>
+		</tr>
+		
+	<!--<tr>
+			<td>Tipo</td><td>${bean_asunto.tipo}</td>
+		</tr>
+		
+		<tr>
+			<td>Fecha de Respuesta</td><td>${fechaRespuesta}</td>
+		</tr>-->
+	</table>
+</div>
+
+</td></tr>
+#{/tablasimple}
+
+<br>
+<br>
+#{if bean_asunto.estatus==1}
+#{form @Soporte.Sistemas.activar(bean_asunto), method:'post'}
+
+<br>	
+	#{ifErrors}
+		<strong>Error:</strong>
+		#{errors}
+			${error}<br>
+		#{/errors}
+	#{/ifErrors} 
+<br>	
+<div class="form_row" align="center">
+	<label for"txTipo">Seleccione el Tipo de Problema: </label>
+		<select type=text name="cbTipo" style="width:150px">
+			<option value="0"></option>
+			<option value="1">Software</option>
+			<option value="2">Hardware</option>
+			<option value="3">&{'ver.aplicacion'}</option>
+		</select>
+</div>
+	
+<br>
+<br>
+<br>
+
+<div class="form_row" align="center">
+	<label for"txPrioridad">Seleccione el Nivel de Prioridad: </label>
+		<select type=text name="cbPrioridad" style="width:150px">
+			<option value="0"></option>
+			<option value="1">Alta</option>
+			<option value="2">Media</option>
+			<option value="3">Baja</option>
+		</select>
+</div>
+	
+<br>
+<br>
+
+<div class="form_row">
+	<label for="">&nbsp;</label>
+		<input id=btnSubmit type="Submit" class="submit" value="&{'soporte.asunto.asignar'}"/>
+</div>
+#{/form}
+#{/if}

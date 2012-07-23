@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="C:/Users/ALMACENES ANFORA/Desktop/12_Jul_12.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/soporte/Respaldo.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <selectedElements exportClassFiles="false" exportJavaFiles="true" exportOutputFolder="false">
+        <file path="/soporte/Respaldo.jardesc"/>
+        <folder path="/soporte/eclipse"/>
+        <folder path="/soporte/public"/>
+        <file path="/soporte/.project"/>
+        <folder path="/soporte/lib"/>
+        <javaElement handleIdentifier="=soporte/app"/>
+        <folder path="/soporte/conf"/>
+        <file path="/soporte/.classpath"/>
+        <javaElement handleIdentifier="=soporte/test"/>
+    </selectedElements>
+</jardesc>

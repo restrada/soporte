@@ -1,0 +1,22 @@
+<center>
+#{if _titulo!=null && _titulo!=''}
+<div class="blg"><div class="tlg">
+<table width="90%" cellpading=0 cellspacing=0 border=0>
+	<tr><td align=left>
+		<strong style="color:navy;font-size:13px">
+		#{if _titulo.indexOf('.')>-1}
+			&{_titulo}
+		#{/if}
+			#{else}
+				${_titulo}
+			#{/else}
+		</strong>
+	</td></tr>
+</table>
+</div></div>
+<br>
+#{/if}
+<table width="${_wd}" cellpading=0 cellspacing=0 border=0 class="${_css}">
+	#{doBody /}
+</table>
+</center>

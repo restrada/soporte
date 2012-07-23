@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_usuarios" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="92f5ddbe-d15e-4c44-8659-11d1dddca44c">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="rutaLogo" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     asunto.`asuntoID` AS asunto_asuntoID,
+     asunto.`detalle` AS asunto_detalle,
+     asunto.`estatus` AS asunto_estatus,
+     asunto.`fechaRegistro` AS asunto_fechaRegistro,
+     asunto.`titulo` AS asunto_titulo
+FROM
+     `asunto` asunto]]>
+	</queryString>
+	<field name="asunto_asuntoID" class="java.lang.Long"/>
+	<field name="asunto_detalle" class="java.lang.String"/>
+	<field name="asunto_estatus" class="java.lang.Integer"/>
+	<field name="asunto_fechaRegistro" class="java.sql.Timestamp"/>
+	<field name="asunto_titulo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="fe6e787b-24c0-42a1-9fe0-042f4ea9e8bf" style="Title" x="179" y="0" width="154" height="70" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Reportes Creados por los Usuarios]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement uuid="4b314ca6-58ad-4e54-8d0e-2e80811a889b" style="Column header" x="333" y="0" width="222" height="70" forecolor="#000000"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["México D.F. a "+ new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement uuid="cbda662d-a3eb-47b4-a3d6-18696d83debf" x="0" y="0" width="179" height="70"/>
+				<imageExpression><![CDATA[$P{rutaLogo} + "logo_main.gif"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement uuid="10db5b5d-3108-48a3-afac-e9af2348ebca" positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="c3f297bc-6648-4645-90c2-1e3b3611e8df" style="Column header" x="0" y="19" width="50" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ed5c3c32-dfdc-418e-9654-e944ce824664" style="Column header" x="161" y="19" width="172" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Detalle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d9570ab0-43ec-4b4f-8375-1be73a21813d" style="Column header" x="333" y="19" width="111" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Estatus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ebdc9364-fafe-4932-a1fa-20f5c6a33674" style="Column header" x="444" y="19" width="111" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Fecha de Registro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7c83d259-0b58-4023-b298-c0ad17aaafdb" style="Column header" x="50" y="19" width="111" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Título]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement uuid="73dbaa5d-126c-4f71-9858-dccdecb667a7" positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="b5b368b4-f5b9-4d11-9a71-3a2d023b012d" style="Detail" x="0" y="0" width="50" height="15"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asunto_asuntoID}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="a7b5407e-0a0c-4747-a834-8731cadaba3b" style="Detail" x="161" y="0" width="172" height="15"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asunto_detalle}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2f439c0f-2a58-44dc-9a81-2c6b3ff5947f" style="Detail" x="333" y="0" width="111" height="15"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asunto_estatus}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy h.mm a">
+				<reportElement uuid="c3d93a91-dbe2-41e3-9512-79f0436efe3b" style="Detail" x="444" y="0" width="111" height="15"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asunto_fechaRegistro}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="7e9b24b0-37fc-4ddf-bb65-a2edece81bda" style="Detail" x="50" y="0" width="111" height="15"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asunto_titulo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement uuid="13c686f0-efd0-4e19-8648-795bc384bff0" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="1312164d-6cdc-4bf6-9934-de48b8d03960" style="Column header" x="435" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="88718b28-1fd5-447e-9406-f81a65ece3d9" style="Column header" x="515" y="0" width="40" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

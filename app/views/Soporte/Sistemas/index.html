@@ -1,0 +1,19 @@
+#{extends 'main.html' /}
+#{set title:'Index Sistemas' /}
+<br>
+<a href="@{Application.index}">&{'soporte.menu.principal'}</a>
+<br>
+<br>
+<br>
+<h1 align="center">&{'soporte.titulo.sistemas'}</h1>
+	<table align="center">
+		<tr>
+			<td colspan=2 align="center"><br>&nbsp;<b>Operaciones del Sistemas</b><br>&nbsp;</td>
+		</tr>
+		<tr>
+			<td></td><td align="center"><a href="@{Soporte.Sistemas.pendientes}">Ver Pendientes Creados</a></td>
+		</tr>
+		<tr>
+			<td></td><td align="center"><a href="@{Soporte.Sistemas.seguimiento}">Ver Seguimiento</a></td>
+		</tr>
+	</table>

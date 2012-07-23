@@ -1,0 +1,48 @@
+#{extends 'main.html' /}
+#{set title:'Pendientes Creados' /}
+<a href="@{Soporte.Sistemas.index}">&{'soporte.menu.sistema'}</a>
+#{set 'moreStyles'}
+
+<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/play-pagination.css'}">
+#{/set}
+
+<br>&nbsp;
+<br>
+#{tablasimple wd:'600'}
+<tr><td>
+#{paginate.controls items:paginator /}
+</td></tr>
+#{/tablasimple}
+
+#{tablasimple wd:'600px'}
+<tr><td>
+<div id="scroll-pane">
+
+	<table width=600px class=gridtable>
+		<tr>
+			<th>ID</th>
+			<th>Titulo</th>
+			<th>Detalle</th>
+			<th>Fecha</th>
+			<th>Estatus</th>
+		</tr>
+#{paginate.list items:paginator, as:'bean_asunto'}
+		<tr>
+			<td align="left">${bean_asunto.asuntoID}</td>
+			<td><a href="@{Soporte.Sistemas.detalle(bean_asunto)}">${bean_asunto.titulo}</a></td>
+			<td align="left">${bean_asunto.detalle}</td>
+			<td align="left">${bean_asunto.fechaRegistro}</td>
+			<td align="left">#{asuntoestatus valor:bean_asunto.estatus/}</td>
+		</tr>
+#{/paginate.list}
+
+	#{else}
+	<tr>
+		<td colspan=3>No hay resultados</td>
+	</tr>		
+
+	#{/else}
+	</table>
+</div>
+</td></tr>
+#{/tablasimple}

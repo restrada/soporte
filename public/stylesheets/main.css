@@ -1,0 +1,189 @@
+body {
+    font-family: Arial, Sans;
+    font-size: 80%;
+    background-color: #ffffff;
+}
+
+a{
+	font-size:12px
+	
+}
+
+h1{
+	font-size:17px;
+	text-align:right;
+	color:navy;
+	padding:5px;
+	border-color:black;
+	border-width:2px;
+}
+
+h2{
+	font-size:15px;
+	text-align:middle;
+	color:gray;
+}
+
+h3{
+	font-size:13px;
+	text-align:middle;
+	color:gray;
+}
+
+
+input[type=text], input[type=password] {
+    border: 1px solid #aaa;
+    float: left;
+    margin-right: 5px;
+}
+.error {
+	font-size:11px;
+    color: #c00;
+	float: left;
+}
+
+.hasError {
+    background: pink;
+}
+
+.label_main{
+	font-size:13px;
+	color:#333333;
+}
+
+
+table.base {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+}
+table.base th {
+	border-width: 1px;
+	padding: 6px;
+	font-size:16px;
+}
+table.base td {
+	border-width: 1px;
+	padding: 6px;
+}
+
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 6px;
+	font-size:13px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+	text-align:middle;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 6px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+	text-align:left;
+}
+
+table.gridtable td.ect {
+	border-width: 1px;
+	padding: 6px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #efefef;
+}
+
+table.gridtable td.num {
+	text-align:right;
+}
+#scroll-pane,.scroll-pane { background-color:white;float:left;overflow: auto; width:600px; height:350px;position:relative;margin-left:0px;margin-bottom:0px;display:inline}
+
+.bl {background: url(/public/images/bl.gif) 0 100% no-repeat #0071b9; }
+.br {background: url(/public/images/br.gif) 100% 100% no-repeat}
+.tl {background: url(/public/images/tl.gif) 0 0 no-repeat}
+.tr {background: url(/public/images/tr.gif) 100% 0 no-repeat; padding:10px}
+.clear {font-size: 1px; height: 1px}
+.tlg {background: url(/public/images/tlg.gif) 0 0 no-repeat}
+.blg {background: url(/public/images/blg.gif) 0 100% no-repeat #efefef;}
+.tlp {background: url(/public/images/tlp.gif) 0 0 no-repeat}
+.blp {background: url(/public/images/blp.gif) 0 100% no-repeat #FFCCCC;}
+
+form.fmt {  /* set width in form, not fieldset (still takes up more room w/ fieldset width */
+  margin: 0;
+  padding: 0;
+  min-width: 600px;
+  max-width: 600px;
+  width: 600px; 
+}
+
+form.fmt fieldset {
+  / * clear: both; note that this clear causes inputs to break to left in ie5.x mac, commented out */
+  border-color: #000;
+  border-width: 1px;
+  border-style: solid;
+  padding: 10px;        /* padding in fieldset support spotty in IE */
+  margin: 0;
+}
+
+form.fmt err {
+  / * clear: both; note that this clear causes inputs to break to left in ie5.x mac, commented out */
+  border-color: red;
+  border-width: 1px;
+  border-style: solid;
+  padding: 10px;        /* padding in fieldset support spotty in IE */
+  margin: 0;
+}
+
+form.fmt fieldset legend {
+	font-size:1.1em; /* bump up legend font size, not too large or it'll overwrite border on left */
+                       /* be careful with padding, it'll shift the nice offset on top of border  */
+}
+
+form.fmt label { 
+	display: block;  /* block float the labels to left column, set a width */
+	float: left; 
+	width: 140px; 
+	padding: 0; 
+	text-align: right; 
+	margin:5px 0 0 10px;
+}
+
+form.fmt fieldset label:first-letter { /* use first-letter pseudo-class to underline accesskey, note that */
+	text-decoration:none
+}
+
+form.fmt input, form.fmt textarea {
+	/* display: inline; inline display must not be set or will hide submit buttons in IE 5x mac */
+	width:auto;      /* set width of form elements to auto-size, otherwise watch for wrap on resize */
+	margin:5px 0 0 10px;
+	padding:2px;
+}
+
+form.fmt input#reset {
+	margin-left:0px; /* set margin-left back to zero on reset button (set above) */
+}
+
+textarea { overflow: auto; }
+
+form.fmt small {
+	display: block;
+	margin: 0 0 5px 160px; /* instructions/comments left margin set to align w/ right column inputs */
+	padding: 1px 3px;
+	font-size: 88%;
+}
+
+form.fmt .required{font-weight:bold;} /* uses class instead of div, more efficient */
+
+div.form_row {
+   	clear: both;
+   	padding-top: 2px;
+   	text-align:left;
+}

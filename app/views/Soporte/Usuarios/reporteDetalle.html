@@ -1,0 +1,184 @@
+#{extends 'main.html' /}
+#{set title:'Ver Detalle Reporte Usuario ' /}
+	<a href ="@{Soporte.Usuarios.reportes}">&{'soporte.asunto.atras'}</a>
+<br>
+<br>
+	<a href ="@{Soporte.Usuarios.index}">&{'soporte.menu.usuario'}</a>
+#{set 'moreStyles'}
+
+<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/play-pagination.css'}">
+#{/set}
+<br>
+
+#{tablasimple wd:'600'}
+<tr><td>
+
+#{paginate.controls items:paginator /}
+
+</td></tr>
+
+#{/tablasimple}
+
+#{tablasimple wd:'600px'}
+
+<tr><td>
+
+<div id="scroll-pane">
+	<table width=600px class=gridtable>
+		<tr>
+			<th>&{'soporte.asunto.titulo'}</th>
+			<th>Valor</th>
+		</tr>
+		
+		<tr>
+			<td>Asunto ID</td><td>${bean_asunto.asuntoID}</td>
+		</tr>
+		
+		<tr>
+			<td>Clave de Persona</td><td>${bean_asunto.clavePersona}</td>
+		</tr>
+		
+		<tr>
+			<td>&{'soporte.asunto.titulo'}</td><td>${bean_asunto.titulo}</td>
+		</tr>
+		
+		<tr>
+			<td>Detalle</td><td>${bean_asunto.detalle}</td>
+		</tr>
+		
+		<tr>
+			<td>Estatus</td><td>#{asuntoestatus valor:bean_asunto.estatus/}</td>
+		</tr>
+		
+		<tr>
+			<td>Fecha de Registro</td><td>${bean_asunto.fechaRegistro}</td>
+		</tr>
+		
+	<!--<tr>
+			<td>Prioridad</td><td>${bean_asunto.prioridad}</td>
+		</tr>
+	-->
+		
+		<tr>
+			<td>Sucursal</td><td>${bean_asunto.sucursalID}</td>
+		</tr>
+		
+	<!--<tr>
+			<td>Tipo</td><td>${bean_asunto.tipo}</td>
+		</tr>
+		
+		<tr>
+			<td>Fecha de Respuesta</td><td>${fechaRespuesta}</td>
+		</tr>
+	-->
+	</table>
+</div>
+
+</td></tr>
+#{/tablasimple}
+
+#{if bean_asunto.estatus==2}
+
+#{tablasimple wd:'600', titulo:'Agregar Comentarios'}
+<tr><td>
+	#{form @Soporte.Usuarios.agregarComentario_user(bean_asunto), method:'post', enctype:'multipart/form-data'}	
+		#{ifErrors}
+		<strong>Error:</strong>
+			#{errors}
+				${error}<br>
+			#{/errors}
+		#{/ifErrors} 
+<br>	
+	<div align="center" class="form_row" >
+		<label for"">Agregar Comentario: </label>
+<br>
+<br>
+			<textarea name="txComentario" rows="2" cols="50" id="comentarios"></textarea>
+<br>
+	</div>
+<br>	
+<br>	
+	<div class="form_row">
+    	<label for"imImagen">&{'soporte.bitacora.archivo'}:</label>
+    		<input type="file" name="imImagen" />
+    </div>
+<br>
+<br>    
+	<div align="center" class="form_row">
+		<label for="">&nbsp;</label>
+			<input id=btnSubmit type="Submit" class="submit" value="&{'soporte.asunto.comentario'}"/>
+	</div>
+	
+	#{/form}
+</td></tr>
+
+#{/tablasimple}
+
+#{/if}
+<br>
+<br>
+#{tablasimple wd:'600'}
+<tr><td>
+
+	#{paginate.controls items:paginator /}
+</td></tr>
+
+#{/tablasimple}
+
+#{tablasimple wd:'600px'}
+<tr><td>
+<div id="scroll-pane">
+	<table width=600px class=gridtable>
+		<tr>
+			<th>Persona que Atiende</th>
+			<th>Comentario</th>
+			<th>Fecha</th>
+			<th>Estatus</th>
+			<th>Archivo Adjunto</th>
+			<th>Imagen</th>
+		</tr>
+#{paginate.list items:paginator3, as:'bean_bitacora'}
+		<tr>
+			<td align="left">${bean_bitacora.clavePersona_Atiende}</td>
+			<td align="left">${bean_bitacora.comentario} </td>
+			<td align="left">${bean_bitacora.fecha}</td>
+			<td align="left">#{asuntoestatus valor:bean_bitacora.estatus/}</td>
+			<td align="left">${bean_bitacora.imagen}</a></td>
+	#{if bean_bitacora.imagen!=null && !bean_bitacora.imagen.equals("")}
+		#{if bean_bitacora.imagen.endsWith("jpg") || bean_bitacora.imagen.endsWith("bmp") || bean_bitacora.imagen.endsWith("gif") || bean_bitacora.imagen.endsWith("png")}
+			<td align="left"> <a href="/public/reportes/${bean_bitacora.imagen}" target="_blank">Ver Imagen</a></td>
+		#{/if}
+	#{/if}
+
+		#{else}
+			<td align="left"> &nbsp;</td>
+		#{/else}
+		</tr>
+#{/paginate.list}
+
+	#{else}
+	<tr>
+		<td colspan=4>No hay resultados</td>
+	</tr>		
+	#{/else}
+	</table>
+</div>
+</td></tr>
+#{/tablasimple}
+	<h3 align="center">Haz click en el siguiente enlace para ver el reporte en PDF o Excel.</h3>
+		<div align="center">
+			<a href="@{Soporte.Usuarios.descargar_reporte_detalle(bean_asunto)}" >Reporte PDF</a> &nbsp; &nbsp; &nbsp;
+			<a href="@{Soporte.Usuarios.descargar_reporte_detalleXLS(bean_asunto)}" >Reporte Excel</a>
+		</div>
+<br>
+<br>
+<br>
+	<h3 align="center">Haz click en el siguiente enlace para ver de nuevo el reporte.</h3>
+<br>
+<br>
+<br>
+		<div align="center">
+			<a href="@{Soporte.Usuarios.verReporteDetallePDF(bean_asunto)}" target="_blank">Ver Reporte PDF</a> &nbsp; &nbsp; &nbsp;
+			<a href="<a href=../../../../public/reportes/Reporte_DetalleXLS.xls"/>Ver Reporte Excel</a>
+		</div>
+<br>

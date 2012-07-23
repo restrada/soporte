@@ -1,0 +1,19 @@
+#{extends 'main.html' /}
+#{set title:'Index Usuarios' /}
+<br>
+<a href="@{Application.index}">&{'soporte.menu.principal'}</a>
+<br>
+<br>
+<br>
+<h1 align="center">&{'soporte.titulo.usuarios'}</h1>
+	<table align="center">
+		<tr>
+			<td colspan=2 align="center"><b>Operaciones del Usuario Final</b><br>&nbsp;</td>
+		</tr>
+		<tr>
+			<td></td><td align="center"><a href="@{Soporte.Usuarios.crearReporte}">&{'asunto.nuevo'}</a></td>
+		</tr>
+		<tr>
+			<td></td><td align="center"><a href="@{Soporte.Usuarios.reportes}">&{'asunto.mis_asuntos'}</a></td>
+		</tr>
+	</table>

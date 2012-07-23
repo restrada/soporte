@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_usuarios" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d8d838e6-a2a0-4098-9ae3-f46724ec7e01">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="rutaLogo" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     asunto.`asuntoID` AS asunto_asuntoID,
+     asunto.`detalle` AS asunto_detalle,
+     asunto.`estatus` AS asunto_estatus,
+     asunto.`fechaRegistro` AS asunto_fechaRegistro,
+     asunto.`titulo` AS asunto_titulo
+FROM
+     `asunto` asunto]]>
+	</queryString>
+	<field name="asunto_asuntoID" class="java.lang.Long"/>
+	<field name="asunto_detalle" class="java.lang.String"/>
+	<field name="asunto_estatus" class="java.lang.Integer"/>
+	<field name="asunto_fechaRegistro" class="java.sql.Timestamp"/>
+	<field name="asunto_titulo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="8b3b7983-d09f-49b3-968c-46121291e835" style="Title" x="179" y="0" width="154" height="70" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Reportes Creados por los Usuarios]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement uuid="716255cd-ea67-4e9f-adb9-40521308fa07" style="Column header" x="333" y="0" width="222" height="70" forecolor="#000000"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["México D.F. a "+ new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement uuid="cf47c11c-2ea8-4407-9c96-1851cc92e20b" x="0" y="0" width="179" height="70"/>
+				<imageExpression><![CDATA[$P{rutaLogo} + "logo_main.gif"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="7c09b9a3-33ff-4026-bd9f-423b56e5bf15" style="Column header" x="0" y="21" width="50" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="28f9bd08-f46d-4e11-bc40-a16414f8131d" style="Column header" x="161" y="21" width="172" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Detalle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1368929d-6cd9-4a54-9ba6-4de9927a9f77" style="Column header" x="333" y="21" width="111" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Estatus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="62edc869-82a5-4d92-8dd2-1458306446ab" style="Column header" x="444" y="21" width="111" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Fecha de Registro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="608c7ece-1d3c-48fd-9b61-de7ce459d575" style="Column header" x="50" y="21" width="111" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Título]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2d36aee1-d532-4eb1-9d2c-32ede2b06180" style="Detail" x="0" y="0" width="50" height="15"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asunto_asuntoID}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2f80027c-dae2-482f-b1fd-f679a185f9df" style="Detail" x="161" y="0" width="172" height="15"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asunto_detalle}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="51ba6cc1-194d-4164-b20b-145f129ca647" style="Detail" x="333" y="0" width="111" height="15"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asunto_estatus}]]></textFieldExpression>
+				<patternExpression><![CDATA[(
+    $F{asunto_estatus} == 1 ?
+    "Creado" :
+    $F{asunto_estatus} == 2 ?
+    "Activo" :
+    $F{asunto_estatus} == 3 ?
+    "Terminado" :
+    $F{asunto_estatus} == 4 ?
+    "Cancelado" :
+    "Desconocido"
+)]]></patternExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="b4a72215-bf58-49d7-b820-87ad30769279" style="Detail" x="50" y="0" width="111" height="15"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asunto_titulo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy h.mm a">
+				<reportElement uuid="8696333e-0821-4e7a-83a0-0b2234985f96" style="Detail" x="444" y="0" width="111" height="15"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asunto_fechaRegistro}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="d0e8c6a0-39c1-4cd1-bf17-bc40f83e71e1" style="Column header" x="435" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="1cd537e8-8b58-4a56-bdcf-a9dac6f50e7a" style="Column header" x="515" y="0" width="40" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

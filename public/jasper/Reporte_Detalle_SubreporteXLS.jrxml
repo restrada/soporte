@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Reporte_Detalle_Subreporte" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="4b2a7428-435f-43e8-b1de-855af0e41bb8">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="580"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="bean_asunto.asuntoID" class="java.lang.Long"/>
+	<parameter name="ruta" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     asunto.`asuntoID` AS asunto_asuntoID,
+     bitacora.`clavePersona_Atiende` AS bitacora_clavePersona_Atiende,
+     bitacora.`comentario` AS bitacora_comentario,
+     bitacora.`fecha` AS bitacora_fecha,
+     bitacora.`estatus` AS bitacora_estatus,
+     bitacora.`imagen` AS bitacora_imagen,
+     bitacora.`asuntoID` AS bitacora_asuntoID
+FROM
+     `asunto` asunto INNER JOIN `bitacora` bitacora ON asunto.`asuntoID` = bitacora.`asuntoID`
+WHERE
+     asunto.asuntoID = $P{bean_asunto.asuntoID}]]>
+	</queryString>
+	<field name="asunto_asuntoID" class="java.lang.Long"/>
+	<field name="bitacora_clavePersona_Atiende" class="java.lang.String"/>
+	<field name="bitacora_comentario" class="java.lang.String"/>
+	<field name="bitacora_fecha" class="java.sql.Timestamp"/>
+	<field name="bitacora_estatus" class="java.lang.Integer"/>
+	<field name="bitacora_imagen" class="java.lang.String"/>
+	<field name="bitacora_asuntoID" class="java.lang.Integer"/>
+	<title>
+		<band height="25">
+			<staticText>
+				<reportElement uuid="ad98e249-e2ed-4531-90fc-7d1494535ce2" x="0" y="0" width="80" height="25"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Persona que
+Atiende]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1c873776-3e3b-4dfb-93f3-a8a313b20bdf" x="80" y="0" width="200" height="25"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comentario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8ec901f7-2341-43a8-a906-af2ccee31b11" x="280" y="0" width="100" height="25"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b70ac8d8-5f44-47fa-9ae5-a1620aee1c39" x="380" y="0" width="50" height="25"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estatus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b9a2e386-e686-4802-928d-6d8c9923e981" x="512" y="0" width="100" height="25"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Imagen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f377ef88-860f-4618-bff7-0e5975334738" x="430" y="0" width="82" height="25"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Archivo Adjunto]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="18371c86-e59c-4bba-92d4-03e531a70c78" x="0" y="0" width="80" height="20" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bitacora_clavePersona_Atiende}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d36e3e79-588f-496c-b589-02daaae705ff" x="80" y="0" width="200" height="20" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bitacora_comentario}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="52cfd5a5-38ce-444a-b110-7c8b7cadbd4d" x="280" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bitacora_fecha}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="688988d7-c580-4282-a65d-7e14ac6aca38" x="380" y="0" width="50" height="20" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bitacora_estatus}]]></textFieldExpression>
+				<patternExpression><![CDATA[(
+    $F{bitacora_estatus} == 1 ?
+    "Creado" :
+    $F{bitacora_estatus} == 2 ?
+    "Activo" :
+    $F{bitacora_estatus} == 3 ?
+    "Terminado" :
+    $F{bitacora_estatus} == 4 ?
+    "Cancelado" :
+    "Desconocido"
+)]]></patternExpression>
+			</textField>
+			<image scaleImage="RealSize">
+				<reportElement uuid="d0c9ec17-d0b3-4abd-890d-8e3a474946f0" x="512" y="0" width="100" height="20">
+					<printWhenExpression><![CDATA[$F{bitacora_imagen}.endsWith( "jpg" ) ||
+$F{bitacora_imagen}.endsWith( "bmp" ) ||
+$F{bitacora_imagen}.endsWith( "png" ) ||
+$F{bitacora_imagen}.endsWith( "gif" )]]></printWhenExpression>
+				</reportElement>
+				<imageExpression><![CDATA[$P{ruta} + $F{bitacora_imagen}]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="1dccc967-0822-4ccf-82ac-b03cc4fd3c9c" x="430" y="0" width="82" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bitacora_imagen}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

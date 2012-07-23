@@ -1,0 +1,41 @@
+# You can specialize this file for each language.
+# For example, for French create a messages.fr file
+#
+menu.titulo.usuarios =Opciones para el Usuario
+menu.titulo.sistemas =Opciones para Sistemas
+menu.tutorial.principal =Tutorial del Sistema
+menu.titulo.tutorial =Ver tutoriales para el uso del Sistema
+soporte.titulo.principal =Página Principal de Soporte al Sistema
+soporte.titulo.tutorial =Página Principal del Tutorial
+soporte.titulo.sistemas =Página Principal para Sistemas
+soporte.titulo.usuarios =Página Principal para Usuarios
+asunto.nuevo =Crear un Reporte Nuevo
+asunto.mis_asuntos=Ver mis Reportes
+pendiente.nuevo =Ver Pendientes (Solo el Área de Sistemas)
+nuevo.titulo =Página de Reporte Nuevo
+ver.titulo =Aquí se muestran los pendientes
+titulo.tutorial.usuario =Ver tutorial del Sistema (Solo Usuarios)
+titulo.tutorial.sistemas =Ver tutorial del Sistema (Solo personal de Sistemas)
+soporte.titulo.nuevo =Crear Reporte
+soporte.asunto.titulo =Título
+soporte.asunto.detalle =Detalle
+soporte.asunto.grabar =Grabar
+soporte.asunto.activar =Activar
+soporte.asunto.asignar =Asignar
+soporte.asunto.atras =Atrás
+soporte.titulo.pendientescreados =Detalle de los Pendientes
+ver.aplicacion =Aplicación
+soporte.menu.principal =Volver a Menú Principal
+soporte.menu.usuario =Volver al Menú de Usuario
+soporte.menu.sistema =Volver al Menú de Sistemas
+soporte.menu.regresar =Volver a Crear Reporte
+soporte.menu.noasignado =No Asignado
+soporte.asunto.comentario =Enviar Comentario
+soporte.asunto.terminar =Terminar
+soporte.reporte.desplegar =Ver Reporte
+soporte.imagen =Imagen
+soporte.imagen.adjuntar =Adjuntar Imagen
+soporte.imagen.enviar =Enviar Imagen
+soporte.bitacora.archivo =* Adjuntar Archivo (opcional)
+soporte.usuarios.menu =Menú Principal de Usuarios
+soporte.sistemas.menu =Menú Principal de Sistemas

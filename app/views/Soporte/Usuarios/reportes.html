@@ -1,0 +1,70 @@
+#{extends 'main.html' /}
+#{set title:'Ver Reportes' /}
+<a href ="@{Soporte.Usuarios.index}">&{'soporte.menu.usuario'}</a>
+<br>
+<br>
+#{set 'moreStyles'}
+
+<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/play-pagination.css'}">
+#{/set}
+
+#{tablasimple wd:'600'}
+<tr><td>
+
+#{paginate.controls items:paginator /}
+</td></tr>
+
+#{/tablasimple}
+
+#{tablasimple wd:'600px'}
+<tr><td>
+<div id="scroll-pane">
+	<table width=600px class=gridtable> 
+		<tr>
+			<th>ID</th>
+			<th>Titulo</th>
+			<th>Detalle</th>
+			<th>Fecha</th>
+			<th>Estatus</th>
+		</tr>
+#{paginate.list items:paginator, as:'bean_asunto'} 
+		<tr>
+			<td align="left">${bean_asunto.asuntoID}</td>
+			<td align="left">${bean_asunto.titulo}</a> </td>
+			<td><a href="@{Soporte.Usuarios.reporteDetalle(bean_asunto)}">${bean_asunto.detalle}</td>
+			<td align="left">${bean_asunto.fechaRegistro}</td>
+			<td align="left">#{asuntoestatus valor:bean_asunto.estatus/}</td>
+		</tr>
+		
+#{/paginate.list}
+
+	#{else}
+	<tr>
+		<td colspan=3>No hay resultados</td>
+	</tr>		
+	#{/else}
+	</table>
+</div>
+</td></tr>
+#{/tablasimple}
+
+<br>
+	<h3 align="center">Haz click en el siguiente enlace para descargar el reporte.</h3>
+<br>
+<br>
+<br>
+	<div align="center">
+		<a href="@{Soporte.Usuarios.descargar_reporte(bean_asunto)}" >Reporte PDF</a> &nbsp; &nbsp; &nbsp;
+		<a href="@{Soporte.Usuarios.descargar_reporteXLS}" >Reporte Excel</a>
+	</div>
+<br>
+<br>
+<br>
+	<h3 align="center">Haz click en el siguiente enlace para ver de nuevo el reporte.</h3>
+<br>
+<br>
+<br>
+	<div align="center">
+			<a href="@{Soporte.Usuarios.verReporteDetallePDF(bean_asunto)}" target="_blank">Ver Reporte PDF</a> &nbsp; &nbsp; &nbsp;
+			<a href="<a href=../../../../public/reportes/reporte_usuariosXLS.xls"/>Ver Reporte Excel</a>
+	</div>

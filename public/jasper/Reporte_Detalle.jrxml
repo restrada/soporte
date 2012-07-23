@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Reporte_Detalle_Usuario" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryNewPage="true" uuid="4981c01f-8f36-4253-ab02-7946b05549cc">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="IMAGE_URL" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="bean_asunto.asuntoID" class="java.lang.Long"/>
+	<parameter name="fechaActual" class="java.lang.String"/>
+	<parameter name="titulo" class="java.lang.String"/>
+	<parameter name="ruta" class="java.lang.String"/>
+	<parameter name="rutaLogo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     asunto.`asuntoID` AS asunto_asuntoID,
+     asunto.`clavePersona` AS asunto_clavePersona,
+     asunto.`detalle` AS asunto_detalle,
+     asunto.`titulo` AS asunto_titulo,
+     asunto.`estatus` AS asunto_estatus,
+     asunto.`sucursalID` AS asunto_sucursalID,
+     asunto.`fechaRegistro` AS asunto_fechaRegistro
+FROM
+     `asunto` asunto
+WHERE
+     asunto.asuntoID = $P{bean_asunto.asuntoID}]]>
+	</queryString>
+	<field name="asunto_asuntoID" class="java.lang.Long"/>
+	<field name="asunto_clavePersona" class="java.lang.String"/>
+	<field name="asunto_detalle" class="java.lang.String"/>
+	<field name="asunto_titulo" class="java.lang.String"/>
+	<field name="asunto_estatus" class="java.lang.Integer"/>
+	<field name="asunto_sucursalID" class="java.lang.Integer"/>
+	<field name="asunto_fechaRegistro" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement uuid="ae17de45-2b2a-4f8d-a096-1d6ebce8eca0" x="0" y="0" width="198" height="70"/>
+				<imageExpression><![CDATA[$P{rutaLogo} + "logo_main.gif"]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="c0e5ebd1-bc0e-4178-954f-73cf282ec68e" x="312" y="50" width="260" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["México D.F. a " + $P{fechaActual}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cf22cee6-b684-4ca0-bffb-3a9ff1becb36" x="312" y="0" width="260" height="50" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{titulo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="210">
+			<staticText>
+				<reportElement uuid="5b792a1c-e075-4fa9-b7e4-33e1346747e4" style="Column header" x="0" y="0" width="100" height="30" forecolor="#000000"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Asunto ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3b935783-237b-4f1e-9624-48856330d0e0" style="Column header" x="0" y="30" width="100" height="30" forecolor="#000000"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Clave Persona]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4826fa2e-9d46-4d1d-886f-800a167fe5a6" style="Column header" x="0" y="60" width="100" height="30" forecolor="#000000"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Título]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5a2ce07f-99f0-4ada-ab3e-12758003c712" style="Column header" x="0" y="90" width="100" height="30" forecolor="#000000"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Detalle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="393ad86f-a143-4559-865c-08b0e3c38faf" style="Column header" x="0" y="120" width="100" height="30" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Estatus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="22dfcd55-5c07-4c12-9f22-c95ad25868cf" style="Column header" x="0" y="150" width="100" height="30" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Fecha de Registro]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="e99b715e-e664-4f29-be32-b0f33ab88db3" style="Detail" x="100" y="30" width="472" height="30" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asunto_clavePersona}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="ea162870-0107-4b53-b610-4250acfd8278" style="Detail" x="100" y="60" width="472" height="30" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asunto_titulo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="6112a011-e65c-444d-9fdd-ccf0c582fab0" style="Detail" x="100" y="90" width="472" height="30" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="9"/>
+					<paragraph lineSpacing="Proportional"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asunto_detalle}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="240f0bf7-1ad9-4966-b3f1-9617977e87e0" style="Detail" x="100" y="120" width="472" height="30" isPrintWhenDetailOverflows="true"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asunto_estatus}]]></textFieldExpression>
+				<patternExpression><![CDATA[(
+    $F{asunto_estatus} == 1 ?
+    "Creado" :
+    $F{asunto_estatus} == 2 ?
+    "Activo" :
+    $F{asunto_estatus} == 3 ?
+    "Terminado" :
+    $F{asunto_estatus} == 4 ?
+    "Cancelado" :
+    "Desconocido"
+)]]></patternExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy h.mm a" isBlankWhenNull="true">
+				<reportElement uuid="97bf4f01-5eca-47b6-816f-5fc83bc85111" style="Detail" x="100" y="150" width="472" height="30" isPrintWhenDetailOverflows="true"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asunto_fechaRegistro}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="e0823431-a129-4aa6-835f-64484c7b1218" x="100" y="0" width="472" height="30"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{bean_asunto.asuntoID}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d39a22e3-caee-41dc-bdca-062d8b7107a2" style="Column header" x="0" y="180" width="100" height="30" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Sucursal]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="53b4a713-0ac6-4fb5-a62d-100f719ed9c5" style="Detail" x="100" y="180" width="472" height="30" isPrintWhenDetailOverflows="true"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asunto_sucursalID}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="97" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="6d4394a6-4b71-44ad-90b3-1cd10f09b7fa" x="0" y="0" width="572" height="97" isPrintWhenDetailOverflows="true"/>
+				<subreportParameter name="bean_asunto.asuntoID">
+					<subreportParameterExpression><![CDATA[$F{asunto_asuntoID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ruta">
+					<subreportParameterExpression><![CDATA[$P{ruta}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["C:\\desarrollo\\reportes\\Soporte\\Reporte_Detalle_Subreporte.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement uuid="43704d76-db49-4b30-9243-2d6b8b5e71cb" style="Column header" x="412" y="0" width="120" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="0ee28030-8a42-41e7-a03f-a1e5fe07e19d" style="Column header" x="532" y="0" width="40" height="15" forecolor="#000000"/>
+				<textElement>
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,51 @@
+#{extends 'main.html' /}
+#{set title:'Ver Reportes' /}
+<a href ="@{Soporte.Usuarios.index}">&{'soporte.menu.usuario'}</a>
+<br>
+<br>
+<a href ="@{Soporte.Usuarios.crearReporte}">&{'soporte.menu.regresar'}</a>
+#{set 'moreStyles'}
+
+<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/play-pagination.css'}">
+#{/set}
+
+#{tablasimple wd:'600'}
+<tr><td>
+
+#{paginate.controls items:paginator /}
+</td></tr>
+
+#{/tablasimple}
+
+#{tablasimple wd:'600px'}
+<tr><td>
+<div id="scroll-pane">
+	<table width=600px class=gridtable>
+		<tr>
+			<th>ID</th>
+			<th>Titulo</th>
+			<th>Detalle</th>
+			<th>Fecha</th>
+			<th>Estatus</th>
+		</tr>
+#{paginate.list items:paginator, as:'bean_asunto'}
+		<tr>
+			<td align="left">${bean_asunto.asuntoID}</td>
+			<td align="left">${bean_asunto.titulo} </td>
+			<td align="left">${bean_asunto.detalle}</td>
+			<td align="left">${bean_asunto.fechaRegistro}</td>
+			<td align="left">#{asuntoestatus valor:bean_asunto.estatus/}</td>
+		</tr>
+		
+#{/paginate.list}
+
+	#{else}
+	<tr>
+		<td colspan=3>No hay resultados</td>
+	</tr>		
+
+	#{/else}
+	</table>
+</div>
+</td></tr>
+#{/tablasimple}

@@ -1,0 +1,39 @@
+#{extends 'main.html' /}
+#{set title:'Crear Reporte Nuevo' /}
+	<a href ="@{Soporte.Usuarios.index}">&{'soporte.menu.usuario'}</a>
+	<h1 align="center">&{'nuevo.titulo'}</h1>
+	<center>
+#{form @Soporte.Usuarios.grabar(), method:'post',class:'fmt', enctype:'multipart/form-data'}
+	<fieldset>
+		<legend>&{'soporte.titulo.nuevo'}</legend>
+	#{ifErrors}
+		<strong>Error:</strong>
+		#{errors}
+			${error}<br>
+		#{/errors}
+	#{/ifErrors}
+	
+	<div class="form_row">
+		<label for"txTitulo">&{'soporte.asunto.titulo'}:</label>
+			<input type=text name="txTitulo" value="${flash.txTitulo}" style="width:400px">
+	</div>	
+
+	<div class="form_row">
+		<label for"txDetalle">&{'soporte.asunto.detalle'}:</label>
+			<textarea name="txDetalle" rows="4" cols="67" id="detalle" value="${flash.txDetalle}"></textarea>
+	</div>	
+	
+	<div class="form_row">
+    	<label for"imImagen">&{'soporte.bitacora.archivo'}:</label>
+    		<input type="file" name="imImagen" />
+    </div>		
+<br>    
+
+	<div align="center" class="form_row">
+		<label for="">&nbsp;</label>
+			<input id=btnSubmit type="Submit" class="submit" value="&{'soporte.asunto.grabar'}"/>
+	</div>
+</fieldset>
+#{/form}
+<br>
+<br>
